@@ -1,0 +1,65 @@
+<?php
+declare(strict_types = 1);
+
+use CRM_Charitylookup_ExtensionUtil as E;
+
+return [
+  'charitylookup_api_key' => [
+    'name' => 'charitylookup_api_key',
+    'type' => 'String',
+    'html_type' => 'text',
+    'html_attributes' => ['size' => 40, 'autocomplete' => 'off'],
+    'default' => '',
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'title' => E::ts('Charity Commission API key'),
+    'description' => E::ts('Primary subscription key from your profile on the <a href="%1" target="_blank">Charity Commission API portal</a>.', [1 => 'https://api-portal.charitycommission.gov.uk/']),
+    'settings_pages' => ['charitylookup' => ['weight' => 10]],
+  ],
+  'charitylookup_api_base_url' => [
+    'name' => 'charitylookup_api_base_url',
+    'type' => 'String',
+    'html_type' => 'text',
+    'html_attributes' => ['size' => 60],
+    'default' => 'https://api.charitycommission.gov.uk/register/api',
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'title' => E::ts('API base URL'),
+    'description' => E::ts('Normally left unchanged.'),
+    'settings_pages' => ['charitylookup' => ['weight' => 20]],
+  ],
+  'charitylookup_update_contact_name' => [
+    'name' => 'charitylookup_update_contact_name',
+    'type' => 'Boolean',
+    'html_type' => 'checkbox',
+    'default' => FALSE,
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'title' => E::ts('Overwrite organisation name'),
+    'description' => E::ts('Replace the organisation name with the registered charity name. The legal name is always updated.'),
+    'settings_pages' => ['charitylookup' => ['weight' => 30]],
+  ],
+  'charitylookup_update_contact_details' => [
+    'name' => 'charitylookup_update_contact_details',
+    'type' => 'Boolean',
+    'html_type' => 'checkbox',
+    'default' => TRUE,
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'title' => E::ts('Update address, phone, email and website'),
+    'description' => E::ts('Store the public contact details from the register against the location type below.'),
+    'settings_pages' => ['charitylookup' => ['weight' => 40]],
+  ],
+  'charitylookup_location_type_id' => [
+    'name' => 'charitylookup_location_type_id',
+    'type' => 'Integer',
+    'html_type' => 'entity_reference',
+    'entity_reference_options' => ['entity' => 'LocationType', 'select' => ['minimumInputLength' => 0]],
+    'default' => NULL,
+    'is_domain' => 1,
+    'is_contact' => 0,
+    'title' => E::ts('Location type for contact details'),
+    'description' => E::ts('Address, phone and email of this location type are created or overwritten. Leave empty to use the default location type.'),
+    'settings_pages' => ['charitylookup' => ['weight' => 50]],
+  ],
+];

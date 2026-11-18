@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/charitylookup/update</path>
+    <page_callback>CRM_Charitylookup_Form_Update</page_callback>
+    <title>Charity Commission lookup</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+  <item>
+    <path>civicrm/admin/setting/charitylookup</path>
+    <page_callback>CRM_Admin_Form_Generic</page_callback>
+    <title>Charity Commission Lookup Settings</title>
+    <access_arguments>administer CiviCRM</access_arguments>
+  </item>
+</menu>
